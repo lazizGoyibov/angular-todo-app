@@ -1,0 +1,91 @@
+
+
+
+<div class="container mt-5">
+    <div class="row d-flex align-items-center justify-content-between">
+        <div class="col-lg-3 col-xl-3 col-xxl-1"></div>
+
+        <div class="col-sm-4 col-md-6 col-lg-6 col-xl-6 col-xxl-8">
+            <app-adder-block (filterer)="filtered($event)" [todo]="todosBase" (Addto)="fromAddTo($event)"></app-adder-block>
+
+
+            <div class="mb-5" [ngSwitch]="inputV">
+                <ng-template ngSwitchCase="All">
+                    <ul class="list-group mt-1" *ngFor="let el of todosBase | paginate:
+                    {
+                        itemsPerPage: lengthSize,
+                        currentPage: page,
+                        totalItems: count
+                    
+                    }"  >
+                        <app-single0-item (originalObj)="original($event)" (editer)="onEdit($event)"  [title]="el" [id]="el" (deleter)="onDeleterr($event)"  (completer)="onComp($event)"></app-single0-item>
+                    </ul>
+
+                    
+            
+                    
+                </ng-template>
+    
+                <ng-template ngSwitchCase="Completed">
+               
+                        <ul class="list-group mt-1" *ngFor="let el of todosBase | paginate:
+                        {
+                            itemsPerPage: lengthSize,
+                            currentPage: page,
+                            totalItems: count
+                        
+                        }"  >
+                            <div class="" *ngIf="el.status">
+                                <app-single0-item (originalObj)="original($event)" (editer)="onEdit($event)"  [title]="el" [id]="el" (deleter)="onDeleterr($event)"  (completer)="onComp($event)"></app-single0-item>
+                            </div>
+                        </ul>
+
+              
+             
+                </ng-template>
+    
+                <ng-template ngSwitchCase="Uncompleted">
+                    <ul class="list-group mt-1" *ngFor="let el of todosBase | paginate:
+                    {
+                        itemsPerPage: lengthSize,
+                        currentPage: page,
+                        totalItems: count
+                    
+                    }"  >
+                       <div class="" *ngIf="!el.status">
+                        <app-single0-item (originalObj)="original($event)" (editer)="onEdit($event)"  [title]="el" [id]="el" (deleter)="onDeleterr($event)"  (completer)="onComp($event)"></app-single0-item>
+                       </div>
+                    </ul>
+
+                    
+                </ng-template>
+
+                <ng-template ngSwitchDefault>
+                    <ul class="list-group mt-1" *ngFor="let el of todosBase | paginate:
+                    {
+                        itemsPerPage: lengthSize,
+                        currentPage: page,
+                        totalItems: count
+                    
+                    }"  >
+                        <app-single0-item (originalObj)="original($event)" (editer)="onEdit($event)"  [title]="el" [id]="el" (deleter)="onDeleterr($event)"  (completer)="onComp($event)"></app-single0-item>
+                    </ul>
+                </ng-template>
+            </div>
+
+
+            <pagination-controls 
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onDataChange($event)"
+            >
+
+            </pagination-controls>
+
+            
+        </div>
+        
+        <div class="col-lg-3 col-xl-3 col-xxl-1"></div>
+    </div>
+</div>
+

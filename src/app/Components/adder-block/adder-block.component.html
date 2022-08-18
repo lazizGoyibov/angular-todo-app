@@ -1,0 +1,23 @@
+
+<div class="d-flex  justify-content-between w-100">
+    <div class="d-flex " style="width: 70%;">
+        <form class="input-group mb-3 " (ngSubmit)="onSubmit()" action="" #adderForm>
+            <input 
+            type="text" name="todoTitle" 
+            [(ngModel)]="todoTitle" 
+            class="form-control" 
+            placeholder="doing homework, cleaning myroom" 
+            aria-label="Recipient's username" 
+            aria-describedby="button-addon2"
+            >
+        <button class="btn btn-primary" type="button" id="button-addon2">Add</button>
+        </form>
+    </div>
+
+    <div class=" w-40">
+        <select class="form-select " aria-label="Default select example" (change)="filterFunc()" #selectInput>
+            <option   *ngFor="let el of arr">{{el}}</option>
+            
+          </select>
+    </div>
+</div>
